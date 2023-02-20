@@ -1,5 +1,4 @@
-mod viewport;
-pub use crate::viewport::run;
+use kube::run;
 
 fn main() {
     pollster::block_on(run());
