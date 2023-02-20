@@ -1,5 +1,8 @@
-use viewport::run;
-use primitive::add;
+mod viewport;
+mod primitive;
+
+pub use crate::viewport::run;
+pub use crate::primitive::add;
 
 fn main() {
     add(2, 4);
