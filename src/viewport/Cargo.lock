@@ -739,15 +739,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "kube"
-version = "0.1.0"
-dependencies = [
- "pollster",
- "primitive",
- "viewport",
-]
-
-[[package]]
 name = "lazy_static"
 version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1106,10 +1097,6 @@ name = "pollster"
 version = "0.2.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5da3b0203fd7ee5720aa0b5e790b591aa5d3f41c3ed2c34a3a393382198af2f7"
-
-[[package]]
-name = "primitive"
-version = "0.1.0"
 
 [[package]]
 name = "proc-macro-crate"
@@ -1474,6 +1461,7 @@ dependencies = [
  "cfg-if",
  "env_logger",
  "log",
+ "pollster",
  "wgpu",
  "winit",
 ]

@@ -1,11 +1,8 @@
 [package]
-name = "kube"
+name = "primitive"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-viewport = { path = "src/viewport" }
-primitive = { path = "src/primitive" }
-pollster = "0.2"
