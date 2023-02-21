@@ -1,14 +1,34 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+struct Point { x: i32,y: i32,z: i32,}
+struct Maille {point0: Point,point1: Point,point2: Point,point3: Point,point4: Point,point5: Point,point6: Point,point7: Point,}
+
+
+fn create_point( x: i32, y: i32,z: i32) -> Point {
+    Point {x, y,z }
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+fn create_maille(point0: Point, point1: Point, point2: Point, point3: Point) -> Maille {
+    Maille { point0, point1, point2, point3,point4, point5, point6, point7 }
 }
+
+fn pmaille(maille : Maille){
+    ppoint(maille.point0);
+    ppoint(maille.point1);
+    ppoint(maille.point2);
+    ppoint(maille.point3);
+
+
+fn main() {
+    let point0 = create_point(-1, -1,  0);
+    let point1 = create_point(-1, 1,  0);
+    let point2 = create_point(1, -1,  1);
+    let point3 = create_point(1, 1,  0);
+    let point4 = create_point(-1, -1,  1);
+    let point5 = create_point(-1, 1,  1);
+    let point6 = create_point(1, -1,  1);
+    let point7 = create_point(1, 1,  0);
+ 
+    let maille:Maille = (point0,point1,point2,point3,point4,point5,point6,point7);
+    
+
+ }
