@@ -2,9 +2,9 @@ mod viewport;
 mod primitive;
 
 pub use crate::viewport::run;
-pub use crate::primitive::add;
+pub use crate::primitive::test;
 
 fn main() {
-    add(2, 4);
-    pollster::block_on(run());
+    test();
+    // pollster::block_on(run());
 }
