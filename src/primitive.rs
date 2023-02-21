@@ -24,13 +24,13 @@ fn pmaille(maille : Maille){
 
 fn cube() -> Maille{
     let point0 = create_point(-1, -1,  0);
-    let point1 = create_point(-1, 1,  0);
-    let point2 = create_point(1, -1,  1);
-    let point3 = create_point(1, 1,  0);
+    let point1 = create_point(-1, 1 ,  0);
+    let point2 = create_point(1 , -1,  1);
+    let point3 = create_point(1 , 1 ,  0);
     let point4 = create_point(-1, -1,  1);
-    let point5 = create_point(-1, 1,  1);
-    let point6 = create_point(1, -1,  1);
-    let point7 = create_point(1, 1,  0);
+    let point5 = create_point(-1, 1 ,  1);
+    let point6 = create_point(1 , -1,  1);
+    let point7 = create_point(1 , 1 ,  0);
     create_maille(point0,point1,point2,point3,point4,point5,point6,point7)
 }
 
@@ -40,3 +40,5 @@ pub fn test() {
     pmaille(cubee);    
     
  }
+
+ //cube => 4 face => 1 face ces N point 
