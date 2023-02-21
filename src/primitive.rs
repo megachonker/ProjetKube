@@ -7,8 +7,8 @@ fn create_point( x: i32, y: i32,z: i32) -> Point {
 }
 
 
-fn create_maille(point0: Point, point1: Point, point2: Point, point3: Point, point4: Point, point5: Point, point6: Point, point7: Point) -> Maille {
-    Maille { point0, point1, point2, point3,point4, point5, point6, point7 }
+fn create_maille(point0: Point,point1: Point,point2: Point,point3: Point,point4: Point,point5: Point,point6: Point,point7: Point) -> Maille {
+     Maille { point0, point1, point2, point3,point4, point5, point6, point7 }
 }
 
 fn ppoint(point: Point){
