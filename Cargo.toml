@@ -7,12 +7,12 @@ edition = "2021"
 
 [dependencies]
 #viewport
-cfg-if = "1"
-winit = "0.27"
-wgpu = "0.15"
-env_logger = "0.10"
-log = "0.4"
-bytemuck = { version = "1.12", features = [ "derive" ] }
+cfg-if = "*"
+winit = "*"
+wgpu = "*"
+env_logger = "*"
+log = "*"
+bytemuck = { version = "*", features = [ "derive" ] }
 
 #main
-pollster = "0.2"
+pollster = "*"
