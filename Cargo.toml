@@ -16,3 +16,6 @@ bytemuck = { version = "*", features = [ "derive" ] }
 
 #main
 pollster = "*"
+
+#primitive
+nalgebra = "*"
