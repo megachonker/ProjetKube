@@ -1,87 +1,83 @@
-use std::{vec};
-use nalgebra::{Point3};
-
-struct Vertex<'a> { coord: Point3<f64>,
-                    face_list:Vec<&'a Face<'a>>
+struct Point {
+    id: i32,
+    x: f64,
+    y: f64,
+    z: f64,
+    is_valid: bool,
 }
 
-impl Vertex<'_> {
-    //calculate distance
-    fn dist(&self,vertex: &Vertex) -> f64{
-        let distance = (self.coord - vertex.coord).norm();
-        print!("Distance {}",&distance);
-        distance
-    }
-
-    fn print(&self){
-        print!("x:{} y:{} z:{}",self.coord.x,self.coord.y,self.coord.z);
-    }
+struct Face {
+    p1: Point,
+    p2: Point,
+    p3: Point,
+    p4: Point,
 }
-struct Face<'a> {vertex:[&'a Vertex<'a>;3]}
 
-impl Face<'_> {
-    /// ajoute une face a la distance la plus éloigner
-    /// 
-    /// A
-    /// | \
-    /// |   C
-    /// | /
-    /// B     D(new vertex)
-    /// 
-    /// A
-    /// | \
-    /// |   C
-    /// | /  \
-    /// B  -- D(new face C-B-D)
-    /// 
-    /// calcule distance 
-    fn add_vertex<'a>(&'a self, azer: &'a Vertex) -> Face {
-        let mut ret;
+struct Cube {
+    p1: Point,
+    p2: Point,
+    p3: Point,
+    p4: Point,
+    p5: Point,
+    p6: Point,
+    p7: Point,
+    p8: Point,
+}
 
-        let A = azer.dist(self.vertex[0]);
-        let B = azer.dist(self.vertex[1]);
-        let C = azer.dist(self.vertex[2]);
-        if A > B && B > C{ ret = Face {vertex: [self.vertex[0],self.vertex[1],&azer]}; }
-        else if B > A && A > C{ ret = Face {vertex: [self.vertex[1],self.vertex[2],&azer]}; }
-        else if C > A && A > B{ ret = Face {vertex: [self.vertex[2],self.vertex[1],&azer]}; }
-        else { ret = Face {vertex: [&azer,&azer,&azer]};}
-        ret
-    }
-
-    fn print(&self){
-        for vertex in &self.vertex {
-            vertex.print(); println!();
-        }
+fn generate_cube(p1: Point, p2: Point, p3: Point, p4: Point, p5: Point, p6: Point, p7: Point, p8: Point) -> Cube {
+    Cube {
+        p1: p1,
+        p2: p2,
+        p3: p3,
+        p4: p4,
+        p5: p5,
+        p6: p6,
+        p7: p7,
+        p8: p8,
     }
 }
 
-struct Mesh<'a>{
-    vertices: Vec<Vertex<'a>>,
-    faces: Vec<Face<'a>>
+fn generate_cube_from_faces(face1: Face, face2: Face) -> Cube {
+    let p1 = face1.p1;
+    let p2 = face1.p2;
+    let p3 = face1.p3;
+    let p4 = face1.p4;
+    let p5 = face2.p1;
+    let p6 = face2.p2;
+    let p7 = face2.p3;
+    let p8 = face2.p4;
+
+    Cube {
+        p1: p1,
+        p2: p2,
+        p3: p3,
+        p4: p4,
+        p5: p5,
+        p6: p6,
+        p7: p7,
+        p8: p8,
+    }
 }
 
-// impl Mesh<'_> {
-//     fn add_face(&mut self, face: Face) {
-//         self.faces.push(face);
-//     }
-// }
+fn split_face_to_triangles(face: Face) -> (FaceTriangle, FaceTriangle) {
+    let p1 = face.p1;
+    let p2 = face.p2;
+    let p3 = face.p3;
+    let p4 = face.p4;
 
-pub fn test() {
-    
-    let a = Vertex {coord: Point3::new(1.0,2.0,3.0), face_list: vec![]};
-    let b = Vertex {coord: Point3::new(11.0,22.0,33.0), face_list: vec![]};
-    let c = Vertex {coord: Point3::new(11.0,21.0,31.0), face_list: vec![]};
+    // On crée deux triangles à partir des points de la face carrée
+    let triangle1 = FaceTriangle {
+        p1: p1,
+        p2: p2,
+        p3: p3,
+    };
 
-    let face = Face {vertex: [&a,&b,&c]};
-    let d = Vertex {coord: Point3::new(1.1,2.2,3.3), face_list: vec![]};
+    let triangle2 = FaceTriangle {
+        p1: p1,
+        p2: p3,
+        p3: p4,
+    };
 
-    let face2 = face.add_vertex(&d);
-    //  Face {vertex: [&b,&c,&d]};
-
-    println!("face1");
-    face.print();
-    println!("face2");
-    face2.print();
+    // On retourne la paire de triangles
+    (triangle1, triangle2)
 }
-
- //cube => 4 face => 1 face ces N point 
